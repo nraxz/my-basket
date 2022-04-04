@@ -1,8 +1,10 @@
-Product code | Name         | Price
----------------------------------------
- FR1          | Fruit tea    |  £3.11
- SR1          | Strawberries |  £5.00
- CF1          | Coffee       | £11.23
+Shopping Basket:
+
+ Product code | Name         | Price
+ ---------------------------------------
+  FR1          | Fruit tea    |  £3.11
+  SR1          | Strawberries |  £5.00
+  CF1          | Coffee       | £11.23
 
  The CEO is a big fan of buy-one-get-one-free offers and of fruit tea. He wants us to add a rule to do this.
  
@@ -36,5 +38,6 @@ Installation:
 - clone the repo : it requires phpspecs*
 - composer update
 
-Command
-  bin/phpspec run 
+Command to run:
+
+- bin/phpspec run 

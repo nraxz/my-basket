@@ -32,34 +32,5 @@ class ProductSpec extends ObjectBehavior
         $this->beConstructedWith('FR1', 'Fruit Tea', 3.11);
         $this->price()->shouldReturn(3.11);        
 
-    }
-
-    function it_calculates_a_total_price()
-    {
-        $this->beConstructedWith('CF1', 'Coffee', 11.23);
-        $this->total(3)->shouldReturn(33.69);
-    }
-
-    function it_calculates_a_total_price_for_buy_one_get_one_Offer()
-    {
-        $this->beConstructedWith('FR1', 'Fruit Tea', 3.11, function($volume, $price){
-            return (floor($volume / 2) + ($volume % 2)) * $price;
-        });
-
-        $this->total(7)->shouldReturn(12.44);
-    }
-
-    function it_calculates_a_price_for_bulk_buy_discount()
-    {
-        $this->beConstructedWith('SR1', 'Strawberries', 5.0, function($volume, $price){
-            if($volume >= 3)
-            {
-                return $volume * ($price * 0.9);
-            }
-            else{
-                return $volume * $price;
-            }
-        });
-
-    }
+    }    
 }

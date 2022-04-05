@@ -12,7 +12,8 @@ class CatalogSpec extends ObjectBehavior
     {
         $this->beConstructedWith([
             new Product('FR1', 'Forest Tea', 3.11),
-            new Product('SR1', 'Straberries', 5.0)
+            new Product('SR1', 'Straberries', 5.0),
+            new Product('CF1', 'Coffee', 11.23)
         ]);
 
     }

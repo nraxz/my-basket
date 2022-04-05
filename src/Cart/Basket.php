@@ -6,6 +6,7 @@ class Basket
 {
     private $catalog;
     private $products = [];
+    public $total = 0.0;
 
     public function beConstructWith(Catalog $catalog)
     {
@@ -28,11 +29,41 @@ class Basket
 
     }
 
-    public function total()
+    public function priceCalForProductbuyOneGetOne($volume, $price)
     {
-        return array_reduce(array_keys($this->products), function($total, $productCode) {
-            $product = $this->catalog->find($productCode);
-            return $total += $product->total($this->products[$productCode]);
-        }, 0);
+        return (floor($volume / 2)  + ($volume % 2) )* $price;
+
     }
+    public function priceCalForProductBulkBuyDiscount($volume, $price)
+    {
+        $a = ($volume * ($price * 0.9));
+        $b = ($volume * $price);
+        return ($volume >= 3)? $a : $b;
+
+    }    
+
+    public function total(){
+
+        foreach ($this->products as $productCode => $volume)
+        {
+            
+            $product = $this->catalog->find($productCode);
+            var_dump($this->$product->price);
+           
+            switch ($productCode){
+                case 'FR1':
+                    $this->total += priceCalForProductbuyOneGetOne($volume, $product->price);
+                    break;
+                case 'SR1':
+                    $this->total += priceCalForProductBulkBuyDiscount($volume, $product->price);
+                    break;
+                case 'CF1':
+                    $this->total += $volume * $product->price;
+            }
+           return $this->$product->price;         
+           
+        }
+
+    }
+    
 }
